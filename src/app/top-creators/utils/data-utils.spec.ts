@@ -37,6 +37,7 @@ describe('Data Utility Functions', () => {
       { id: '2', creatorId: 'A', createTime: '2022-01-02T12:00:00' },
       { id: '3', creatorId: 'A', createTime: '2022-01-03T12:00:00' },
       { id: '3', creatorId: 'B', createTime: '2022-01-03T12:00:00' },
+      { id: '3', creatorId: 'A', createTime: '2022-01-02T11:00:00' },
     ];
     const creatorId = 'A';
 
@@ -110,6 +111,44 @@ describe('Data Utility Functions', () => {
     const result = compareCreators(creatorA, creatorB);
 
     expect(result).toBeLessThanOrEqual(-1);
+  });
+
+  it('should correctly compare creators by most recent product', () => {
+    const creatorA = {
+      productCount: 3,
+      mostRecentProduct: null,
+    };
+    const creatorB = {
+      productCount: 3,
+      mostRecentProduct: {
+        id: '1',
+        creatorId: 'B',
+        createTime: '2022-01-02T12:00:00',
+      },
+    };
+
+    const result = compareCreators(creatorA, creatorB);
+
+    expect(result).toBeLessThanOrEqual(1);
+  });
+
+  it('should correctly compare creators by most recent product', () => {
+    const creatorA = {
+      productCount: 3,
+      mostRecentProduct: {
+        id: '1',
+        creatorId: 'A',
+        createTime: '2022-01-04T12:00:00',
+      },
+    };
+    const creatorB = {
+      productCount: 3,
+      mostRecentProduct: null,
+    };
+
+    const result = compareCreators(creatorA, creatorB);
+
+    expect(result).toBeLessThanOrEqual(1);
   });
 
   it('should return 0 if creators have the same product count and no most recent product', () => {
