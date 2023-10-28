@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import {
   compareCreators,
   getMostRecentProduct,
@@ -35,12 +34,7 @@ export class CreatorsDataService {
         creatorsWithStats.sort(compareCreators);
 
         return creatorsWithStats.slice(0, numberOfCreators);
-      }),
-      catchError(this.handleError)
+      })
     );
-  }
-
-  private handleError(err: HttpErrorResponse): Observable<never> {
-    return throwError(() => err);
   }
 }
