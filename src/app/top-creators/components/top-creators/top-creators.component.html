@@ -3,6 +3,6 @@
     <mat-card-title>Top {{ maxTopCreators }} Active Creators</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <app-creator-list></app-creator-list>
+    <app-creator-list [topCreators]="topCreators$ | async"></app-creator-list>
   </mat-card-content>
 </mat-card>

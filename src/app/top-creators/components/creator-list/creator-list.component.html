@@ -1,1 +1,20 @@
-<p>creator-list works!</p>
+<mat-list>
+  <ng-container
+    *ngFor="
+      let creator of topCreators;
+      let i = index;
+      let last = last;
+      trackBy: trackByFn
+    "
+  >
+    <mat-list-item>
+      <span matListItemTitle>Creator: {{ creator.user.email }}</span>
+      <span matListItemLine>Product count: {{ creator.productCount }}</span>
+      <span matListItemLine
+        >Latest update:
+        {{ creator.mostRecentProduct?.createTime | date : "medium" }}</span
+      >
+    </mat-list-item>
+    <mat-divider *ngIf="!last"></mat-divider>
+  </ng-container>
+</mat-list>
