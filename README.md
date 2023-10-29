@@ -10,12 +10,23 @@ The "Creators Products Application" is a project built using Angular. The primar
 ### External Libraries
 
 - **Angular Material:**
+
   - Provides consistent and visually appealing UI components.
   - components are built to be responsive and are optimized for mobile devices.
   - provides a wide range of pre-built and tested components therefore saves development time.
   - components are designed with accessibility in mind.
   - components are optimized for performance.
   - components are tested across different browsers.
+
+- **RxJS:**
+
+  - used to handle HTTP requests and responses.
+  - used to transform data (map, filter).
+
+- **EsLint:**
+  - identify syntax errors, common mistakes
+  - enforces consistent code style
+  - identify potential sources of bugs
 
 # Project Structure
 
